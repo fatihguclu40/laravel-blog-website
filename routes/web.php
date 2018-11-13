@@ -36,6 +36,7 @@ Route::group(['prefix'=>'admin'],function (){
         Route::post('/blog-ekle','AdminPostController@post_blog_ekle');
         Route::get('/blog-duzenle/{slug}','AdminGetController@get_blog_duzenle');
         Route::post('/blog-duzenle/{slug}','AdminPostController@post_blog_duzenle');
+        Route::post('/silinecek');
 
     });
 
