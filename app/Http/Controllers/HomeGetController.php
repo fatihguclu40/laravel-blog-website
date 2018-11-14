@@ -30,7 +30,8 @@ class HomeGetController extends HomeController
         $bloglar = Blog::orderBy('id','desc')->get();
         return view('frontend.blog')->with('bloglar',$bloglar);
     }
-    public function get_blog_detay(){
-        return view('frontend.blog-detay');
+    public function get_blog_icerik($slug){
+        $blog = Blog::where('slug',$slug)->first();
+        return view('frontend.blog-detay')->with('blog',$blog);
     }
 }

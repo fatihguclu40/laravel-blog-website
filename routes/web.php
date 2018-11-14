@@ -18,10 +18,10 @@ Route::get('/anasayfa', 'HomeGetController@get_index_yonlendir' );
 Route::get('/iletisim', 'HomeGetController@get_iletisim' );
 Route::get('/hakkimizda', 'HomeGetController@get_hakkimizda' );
 Route::get('/blog', 'HomeGetController@get_blog' );
-Route::get('/blog/blog-detay', 'HomeGetController@get_blog_detay' );
+Route::get('/blog/{slug}', 'HomeGetController@get_blog_icerik' );
 
 
-Route::group(['prefix'=>'admin'],function (){
+Route::group(['prefix'=>'admin','middleware'=>'Admin'],function (){
 	Route::get('/','AdminGetController@get_index');
 	Route::get('/ayarlar','AdminGetController@get_ayarlar');
 	Route::post('/ayarlar','AdminPostController@post_ayarlar');
@@ -42,3 +42,7 @@ Route::group(['prefix'=>'admin'],function (){
 
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
