@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Hakkimizda;
+use App\Kategori;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -78,7 +79,8 @@ class AdminPostController extends AdminController
 
             'baslik' => 'required|max:250',
             'etiketler' => 'required|max:250',
-            'icerik' => 'required'
+            'icerik' => 'required',
+            'kategori'=>'required'
 
         ]);
         if ($validator->fails()) {
@@ -177,6 +179,38 @@ class AdminPostController extends AdminController
 
 
         }
+    }
+    public function post_kategori_ekle(Request $request){
+
+        $validator=Validator::make($request->all(),[
+            'ad' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response(['durum'=>'error','baslik'=>'Hata','icerik'=>'kategri Adını Giriniz ']);
+        }
+
+        try{
+            $slug = str_slug($request->ad);
+            $request->merge(['slug'=>$slug]);
+            Kategori::create($request->all());
+            return response(['durum'=>'success','baslik'=>'Başarılı','icerik'=>'Kayıt Başarılı']);
+
+        }catch (\Exception $e){
+            return response(['durum'=>'error','baslik'=>'Hata','icerik'=>'Kayıt Yapılamadı.','hata'=>$e]);
+        }
+
+
+
+    }
+    public function post_kategori_sil(Request $request){
+
+        try{
+            Kategori::where('id',$request->id)->delete();
+            return response(['durum'=>'success','baslik'=>'Başarılı','icerik'=>'Silme İşlemi Başarılı.']);
+        }catch (\Exception $e){
+            return response(['durum'=>'error','baslik'=>'Hata','icerik'=>'Silme İşlemi Hatalı!','hata'=>$e]);
+        }
+
     }
 
 

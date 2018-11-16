@@ -60,7 +60,7 @@
                     <ul class="nav child_menu">
                       <li><a href="/admin/blog">Bloglar</a></li>
                       <li><a href="/admin/blog/blog-ekle">Blog Ekle</a></li>
-                      <li><a href="/admin/blog/kategori">Kategoriler</a></li>
+                      <li><a href="/admin/blog/kategoriler">Kategoriler</a></li>
                       <li><a href="/admin/blog/kategori-ekle">Kategori Ekle</a></li>
                     </ul>
                   </li>

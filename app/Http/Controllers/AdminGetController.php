@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Ayarlar;
 use App\Blog;
 use App\Hakkimizda;
+use App\Kategori;
 
 class AdminGetController extends AdminController
 {
@@ -28,10 +29,19 @@ class AdminGetController extends AdminController
         return view('backend.blog')->with('bloglar',$bloglar);
     }
     public function get_blog_ekle(){
-        return view('backend.blog-ekle');
+        $kategoriler = Kategori::where('ust_kategori','0')->get();
+        return view('backend.blog-ekle')->with('kategoriler',$kategoriler);
     }
     public function get_blog_duzenle($slug){
         $bloglar = Blog::where('slug',$slug)->first();
         return view('backend.blog-duzenle')->with('bloglar',$bloglar);
+    }
+    public function get_kategori_ekle(){
+        $kategoriler = Kategori::where('ust_kategori','0')->get();
+        return view('backend.kategori-ekle')->with('kategoriler',$kategoriler);
+    }
+    public function get_kategoriler(){
+        $kategoriler = Kategori::where('ust_kategori','0')->get();
+        return view('backend.kategoriler')->with('kategoriler',$kategoriler);
     }
 }

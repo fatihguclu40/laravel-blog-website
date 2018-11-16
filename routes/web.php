@@ -18,7 +18,7 @@ Route::get('/anasayfa', 'HomeGetController@get_index_yonlendir' );
 Route::get('/iletisim', 'HomeGetController@get_iletisim' );
 Route::get('/hakkimizda', 'HomeGetController@get_hakkimizda' );
 Route::get('/blog', 'HomeGetController@get_blog' );
-Route::get('/blog/{slug}', 'HomeGetController@get_blog_icerik' );
+Route::get('/blog/{slug}', 'HomeGetController@get_blog_icerik' )->where('slug','^[a-zA-Z0-9-_\/]+$');
 
 
 Route::group(['prefix'=>'admin','middleware'=>'Admin'],function (){
@@ -36,6 +36,10 @@ Route::group(['prefix'=>'admin','middleware'=>'Admin'],function (){
         Route::post('/blog-ekle','AdminPostController@post_blog_ekle');
         Route::get('/blog-duzenle/{slug}','AdminGetController@get_blog_duzenle');
         Route::post('/blog-duzenle/{slug}','AdminPostController@post_blog_duzenle');
+        Route::get('/kategori-ekle','AdminGetController@get_kategori_ekle');
+        Route::post('/kategori-ekle','AdminPostController@post_kategori_ekle');
+        Route::get('/kategoriler','AdminGetController@get_kategoriler');
+        Route::post('/kategoriler','AdminPostController@post_kategori_sil');
 
     });
 
