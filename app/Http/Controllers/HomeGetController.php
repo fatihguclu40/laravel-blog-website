@@ -7,11 +7,23 @@ use App\Blog;
 use App\Hakkimizda;
 use App\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeGetController extends HomeController
 {
     public function get_index(){
         return view('frontend.index');
+    }
+    public function get_giris_yap(){
+        return view('frontend.giris-yap');
+    }
+    public function get_cikis_yap(){
+        Auth::logout();
+        return redirect('/');
+    }
+    public function get_kayit_ol(){
+
+        return view('frontend.kayit');
     }
     public function get_index_yonlendir (){
         return redirect('/');
