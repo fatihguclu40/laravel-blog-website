@@ -11,10 +11,15 @@ class Blog extends Model
 
 
 // Model ilişkilendirme (veri tabanında tablo)
+
     public function parent(){
-        // ilk kısım ilişkilendirme yapılacak model
-        //ikinci kısım o modelde ilikilendirme yapılacak olan alan
-        //son kısım ise şuan bulunduğunuz modeldeki ilişkilendirme yapılacak olan alan
         return $this->belongsTo('App\Kategori','kategori','id');
+    }
+
+    public function yorumlar(){
+        return $this->hasMany('App\Yorum','blog','slug');
+    }
+    public function user(){
+        return $this->hasOne('App\User','id','yazar');
     }
 }

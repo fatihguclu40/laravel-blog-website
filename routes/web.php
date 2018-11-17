@@ -18,7 +18,9 @@ Route::get('/anasayfa', 'HomeGetController@get_index_yonlendir' );
 Route::get('/iletisim', 'HomeGetController@get_iletisim' );
 Route::get('/hakkimizda', 'HomeGetController@get_hakkimizda' );
 Route::get('/blog', 'HomeGetController@get_blog' );
+Route::get('/blog/yazar/{yazar}', 'HomeGetController@get_blog_yazar' );
 Route::get('/blog/{slug}', 'HomeGetController@get_blog_icerik' )->where('slug','^[a-zA-Z0-9-_\/]+$');
+Route::post('/blog/{slug}', 'HomePostController@post_blog_yorum' )->where('slug','^[a-zA-Z0-9-_\/]+$');
 
 
 Route::group(['prefix'=>'admin','middleware'=>'Admin'],function (){

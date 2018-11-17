@@ -34,7 +34,7 @@
                                         @foreach($resimler=Storage::disk('uploads')->files('img/blog/'.$blog->slug) as $resim)
                                             <div>
                                                 <div class="img-thumbnail">
-                                                    <img class="img-responsive" src="/uploads/{{$resim}}" alt="">
+                                                    <img class="img-responsive" src="/uploads/{{$resim}}" alt="" style="height: 500px;width: 1280px;">
                                                 </div>
                                             </div>
                                         @endforeach
@@ -43,8 +43,11 @@
                                 </div>
 
                                 <div class="post-date">
-                                    <span class="day">10</span>
-                                    <span class="month">Jan</span>
+
+                                    @php($zaman=$blog->created_at)
+                                    @php($zaman->setLocale('tr'))
+                                    <span class="day">{{$zaman->format('d')}}</span>
+                                    <span class="month">{{$zaman->format('M')}}</span>
                                 </div>
 
                                 <div class="post-content">
@@ -54,10 +57,10 @@
                                     {{substr($blog->icerik,0,250)}}...
 
                                     <div class="post-meta">
-                                        <span><i class="fa fa-user"></i> By <a href="#">John Doe</a> </span>
+                                        <span><i class="fa fa-user"></i> By <a href="/blog/yazar/{{$blog->user->slug}}-{{$blog->user->id}}">{{$blog->user->name}}</a> </span>
                                         <span><i class="fa fa-tag"></i> <a href="#">Duis</a>, <a
                                                     href="#">News</a> </span>
-                                        <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
+                                        <span><i class="fa fa-comments"></i>{{$blog->yorumlar->count()}} Yorum</span>
                                         <a href="/blog/@if(isset($blog->parent))@php($ustkategori=$blog->parent)@if(isset($ustkategori->parent))@php($ustustkategori=$ustkategori->parent)@if(isset($ustustkategori->parent)){{$ustustkategori->parent->slug}}/@endif{{$ustkategori->parent->slug}}/@endif{{$blog->parent->slug}}/@endif{{$blog->slug}}" class="btn btn-xs btn-primary pull-right">Devamını Oku...</a>
                                     </div>
 

@@ -44,4 +44,10 @@ class HomeGetController extends HomeController
             return view('frontend.blog')->with('bloglar',$bloglar)->with('kategoriler',$kategoriler);
         }
     }
+    public function get_blog_yazar($yazar){
+        $y = explode('-',$yazar);
+        $kategoriler =Kategori::where('ust_kategori','0')->get();
+        $bloglar = Blog::where('yazar',$y[count($y)-1])->orderBy('id','desc')->get();
+        return view('frontend.blog')->with('bloglar',$bloglar)->with('kategoriler',$kategoriler);
+    }
 }
