@@ -41,7 +41,6 @@
                                 <span><i class="fa fa-user"></i> By <a href="#">John Doe</a> </span>
                                 <span><i class="fa fa-tag"></i> <a href="#">Duis</a>, <a href="#">News</a> </span>
                                 <span><i class="fa fa-comments"></i> <a href="#">12 Comments</a></span>
-                                <span><i class="fa fa-comments"></i> <a href="#">{{ Counter::showAndCount('forum', $forum->id) }} Görüntülenme</a></span>
 
                             </div>
 
