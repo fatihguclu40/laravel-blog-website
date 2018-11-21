@@ -64,6 +64,13 @@
                       <li><a href="/admin/blog/kategori-ekle">Kategori Ekle</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-newspaper-o"></i> Forum  <span class="fa fa-chevron-down"></span> </a>
+                    <ul class="nav child_menu">
+                      <li><a href="/admin/forum">Bloglar</a></li>
+                      <li><a href="/admin/forum/ana-basliklar">Ana Başlıklar</a></li>
+                      <li><a href="/admin/forum/ana-baslik-ekle">Ana Başlık Ekle</a></li>
+                    </ul>
+                  </li>
 
                 </ul>
               </div>
@@ -115,6 +122,7 @@
                     </li>
                     <li><a href="javascript:;">Help</a></li>
                     <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="/"><i class="fa fa-sign-out pull-right"></i> Web Sayfası</a></li>
                   </ul>
                 </li>
 

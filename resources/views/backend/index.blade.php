@@ -6,7 +6,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Plain Page</h3>
+                <h3>Ana Sayfa</h3>
               </div>
 
 
@@ -19,7 +19,7 @@
                 <div class="x_panel">
 
                   <div class="x_content">
-                      Add content to the page ...
+                     İçerik Alanı ...
                   </div>
                 </div>
               </div>

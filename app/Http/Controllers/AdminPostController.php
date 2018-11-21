@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Blog;
 use App\Hakkimizda;
 use App\Kategori;
+use App\Anabaslik;
+use App\Yorum;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -210,6 +212,28 @@ class AdminPostController extends AdminController
         }catch (\Exception $e){
             return response(['durum'=>'error','baslik'=>'Hata','icerik'=>'Silme İşlemi Hatalı!','hata'=>$e]);
         }
+
+    }
+    public function post_anabaslik_ekle(Request $request){
+
+        $validator=Validator::make($request->all(),[
+            'baslik' => 'required|max:50',
+            'kisa_aciklama' => 'required|max:250'
+        ]);
+        if ($validator->fails()) {
+            return response(['durum'=>'error','baslik'=>'Hata','icerik'=>'Doldurulması Zorunlu Alanları Doldurun ']);
+        }
+        $slug = str_slug($request->baslik);
+        try{
+
+            $request->merge(['slug'=>$slug]);
+            Anabaslik::create($request->all());
+            return response(['durum'=>'success','baslik'=>'Başarılı','icerik'=>'Kayıt Başarılı']);
+
+        }catch (\Exception $e){
+            return response(['durum'=>'error','baslik'=>'Hata','icerik'=>'Kayıt Yapılamadı.','hata'=>$e]);
+        }
+
 
     }
 
